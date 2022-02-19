@@ -1,0 +1,21 @@
+.header {
+  padding: 0 200px;
+}
+
+@media screen and (max-width: 1279px) {
+  .header {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    padding: 0 34px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .header {
+    padding: 0;
+  }
+}
