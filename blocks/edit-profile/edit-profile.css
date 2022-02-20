@@ -1,0 +1,24 @@
+.edit-profile {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #ffffff;
+  position: absolute;
+  right: -42px;
+  top: 18px;
+  background-image: url(../../images/icons/edit.svg);
+  background-repeat: no-repeat;
+  background-size: 10px 10px;
+  background-position: center center;
+}
+/*принято решение спозиционировать кнопку абсолютно, т.к. флексами не получается выровнять ее по макету - центр и базовая линия не подходят*/
+/*изображение меняет свой размер поэтому вставлено как фон, можно было конечно сделать флексами, но тогда пришлось бы присваивать дополнительный класс самому изображению чтобы изменять его размер на мобильных*/
+
+@media screen and (max-width: 767px) {
+  .edit-profile {
+    width: 18px;
+    height: 18px;
+    background-size: 7px 7px;
+    top: 8px;
+    right: -28px;
+  }
+}
