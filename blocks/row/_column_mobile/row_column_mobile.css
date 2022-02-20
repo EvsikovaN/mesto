@@ -1,0 +1,9 @@
+.row_column_mobile {
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 767px) {
+  .row_column_mobile {
+    flex-direction: column;
+  }
+}
