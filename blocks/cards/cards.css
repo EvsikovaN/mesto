@@ -1,0 +1,38 @@
+.cards {
+  padding: 0 200px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 17px;
+  /*почему если задать это свойство чтобы выравнивать карточки по центру при выводе в две колоки - разносит последнюю карточку?! и как это можно было бы решить подскажите пожалуйста*/
+  /* justify-items: center; */
+}
+
+@media screen and (max-width: 1279px) {
+  .cards {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .cards {
+    padding: 0 34px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .cards {
+    padding: 0 19px;
+  }
+}
