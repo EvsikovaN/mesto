@@ -1,0 +1,9 @@
+.like {
+  width: 22px;
+  height: 19px;
+  background-image: url(../../images/icons/like.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin-left: 30px;
+}
