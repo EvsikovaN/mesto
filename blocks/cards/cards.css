@@ -3,8 +3,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px 17px;
-  /*почему если задать это свойство чтобы выравнивать карточки по центру при выводе в две колоки - разносит последнюю карточку?! и как это можно было бы решить подскажите пожалуйста*/
-  /* justify-items: center; */
+  justify-items: center;
 }
 
 @media screen and (max-width: 1279px) {

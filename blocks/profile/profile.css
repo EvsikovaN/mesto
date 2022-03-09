@@ -2,6 +2,11 @@
   padding: 0 200px;
   margin-top: 40px;
   margin-bottom: 50px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 @media screen and (max-width: 1279px) {
@@ -15,6 +20,7 @@
     padding: 0 34px;
     margin-top: 42px;
     margin-bottom: 36px;
+    flex-direction: column;
   }
 }
 

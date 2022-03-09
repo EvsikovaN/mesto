@@ -10,97 +10,93 @@
 <body class="page">
     <div class="page__container">
         <header class="header">
-            <div class="header__inner">
-                <img src="./images/icons/logo.svg" alt="логотип" class="header__logo">
-            </div>
+            <img src="./images/icons/logo.svg" alt="логотип" class="header__logo">
         </header>
         <main class="main">
             <section class="profile">
-                <div class="row row_column_mobile">
-                    <div class="row row_column_mobile">
-                        <div class="profile__avatar"></div>
-                        <div class="profile__info">
-                            <p class="profile__name">Жак-Ив Кусто</p>
-                            <button type="button" class="btn edit-profile"></button>
-                            <p class="profile__detail">Исследователь океана</p>
+                <div class="row">
+                    <img class="profile__avatar" src="./images/common/avatar.jpg" alt="фото профиля">
+                    <div class="profile__info">
+                        <div class="flex-wrapper">
+                            <!-- поскольку я не могу обсудить с дизайнером максимальную ширину контента для имени и профессии - принято самостоятельное решение установить ее значение в css -->
+                            <h1 class="profile__name">Жак-Ив Кусто</h1>
+                            <button type="button" class="profile__btn profile__btn_edit"></button>
                         </div>
+                        <p class="profile__detail">Исследователь океана</p>
                     </div>
-                    <button type="button" class="btn add-picture">
-                        <img src="./images/icons/add.svg" alt="добавить изображение">
-                    </button>
                 </div>
+                <button type="button" class="profile__btn profile__btn_add">
+                    <img src="./images/icons/add.svg" alt="добавить изображение">
+                </button>
             </section>
             <section class="cards">
                 <div class="card">
                     <img class="card__photo" src="./images/places/pic-1.jpg" alt="Карачаевск">
                     <div class="card__caption">
-                        <div class="card__place">
+                        <p class="card__place">
                             Карачаевск
-                        </div>
-                        <button class="btn like" type="button"></button>
+                        </p>
+                        <button class="card__btn" type="button"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img class="card__photo" src="./images/places/pic-2.jpg" alt="Гора Эльбрус">
                     <div class="card__caption">
-                        <div class="card__place">
+                        <p class="card__place">
                             Гора Эльбрус
-                        </div>
-                        <button class="btn like" type="button"></button>
+                        </p>
+                        <button class="card__btn" type="button"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img class="card__photo" src="./images/places/pic-3.jpg" alt="Домбай">
                     <div class="card__caption">
-                        <div class="card__place">
+                        <p class="card__place">
                             Домбай
-                        </div>
-                        <button class="btn like" type="button"></button>
+                        </p>
+                        <button class="card__btn" type="button"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img class="card__photo" src="./images/places/pic-2.jpg" alt="Гора Эльбрус">
                     <div class="card__caption">
-                        <div class="card__place">
+                        <p class="card__place">
                             Гора Эльбрус
-                        </div>
-                        <button class="btn like" type="button"></button>
+                        </p>
+                        <button class="card__btn" type="button"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img class="card__photo" src="./images/places/pic-3.jpg" alt="Домбай">
                     <div class="card__caption">
-                        <div class="card__place">
+                        <p class="card__place">
                             Домбай
-                        </div>
-                        <button class="btn like" type="button"></button>
+                        </p>
+                        <button class="card__btn" type="button"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img class="card__photo" src="./images/places/pic-1.jpg" alt="Карачаевск">
                     <div class="card__caption">
-                        <div class="card__place">
+                        <p class="card__place">
                             Карачаево-Черкессия
-                        </div>
-                        <!-- почему like в этой карточке стал меньше? -->
-                        <button class="btn like" type="button"></button>
-                    </div>
-                </div>
-            </section>
-            <section class="popup">
-                <div class="popup__inner">
-                    <div class="popup__container">
-                        <h2 class="popup__title">Редактировать профиль</h2>
-                        <form class="popup__form">
-                            <input class="popup__input popup__input_name" type="text" value="">
-                            <input class="popup__input popup__input_detail" type="text" value="">
-                            <button type="submit" class="btn popup__save">Сохранить</button>
-                        </form>
-                        <button type="button" class="btn popup__close"></button>
+                        </p>
+                        <button class="card__btn" type="button"></button>
                     </div>
                 </div>
             </section>
         </main>
+        <section class="popup popup_type_edit-profile">
+            <div class="popup__container">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <form class="popup__form popup__form_type_edit-profile" name="edit-profile-popup">
+                    <input class="popup__input popup__input_name" type="text" value="Жак-Ив Кусто" name="name">
+                    <input class="popup__input popup__input_detail" type="text" value="Исследователь океана" name="detail">
+                    <button type="submit" class="popup__save">Сохранить</button>
+                </form>
+                <button type="button" class="popup__close popup__close_form_edit-profile"></button>
+            </div>
+        </section>
         
         <footer class="footer">
             <p class="footer__copyright">&copy;&nbsp;2020 Mesto Russia</p>

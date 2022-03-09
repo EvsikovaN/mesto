@@ -1,4 +1,4 @@
-.btn {
+.profile__btn {
   background-color: transparent;
   border: 0;
   cursor: pointer;
@@ -6,6 +6,6 @@
   padding: 0;
 }
 
-.btn:hover {
+.profile__btn:hover {
   opacity: 0.6;
 }
