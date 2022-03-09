@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", function (event) {
   const editProfile = document.querySelector(".profile__btn_edit");
-  const popup = document.querySelector(".popup_type_edit-profile");
-  const closeButton = document.querySelector(".popup__close_form_edit-profile");
+  const popup = document.querySelector(".popup");
+  const closeButton = document.querySelector(".popup__close");
   const profileName = document.querySelector(".profile__name");
   const profileDetail = document.querySelector(".profile__detail");
-  const inputName = document.querySelector(".popup__input_name");
-  const inputDetail = document.querySelector(".popup__input_detail");
-  const formPopup = document.querySelector(".popup__form_type_edit-profile");
+  const inputName = document.querySelector(".popup__input_type_name");
+  const inputDetail = document.querySelector(".popup__input_type_detail");
+  const formPopup = document.querySelector(".popup__form");
 
   let nameContent;
   let detailContent;

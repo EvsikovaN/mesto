@@ -18,7 +18,6 @@
                     <img class="profile__avatar" src="./images/common/avatar.jpg" alt="фото профиля">
                     <div class="profile__info">
                         <div class="flex-wrapper">
-                            <!-- поскольку я не могу обсудить с дизайнером максимальную ширину контента для имени и профессии - принято самостоятельное решение установить ее значение в css -->
                             <h1 class="profile__name">Жак-Ив Кусто</h1>
                             <button type="button" class="profile__btn profile__btn_edit"></button>
                         </div>
@@ -33,65 +32,66 @@
                 <div class="card">
                     <img class="card__photo" src="./images/places/pic-1.jpg" alt="Карачаевск">
                     <div class="card__caption">
-                        <p class="card__place">
+                        <h2 class="card__place">
                             Карачаевск
-                        </p>
+                        </h2>
                         <button class="card__btn" type="button"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img class="card__photo" src="./images/places/pic-2.jpg" alt="Гора Эльбрус">
                     <div class="card__caption">
-                        <p class="card__place">
+                        <h2 class="card__place">
                             Гора Эльбрус
-                        </p>
+                        </h2>
                         <button class="card__btn" type="button"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img class="card__photo" src="./images/places/pic-3.jpg" alt="Домбай">
                     <div class="card__caption">
-                        <p class="card__place">
+                        <h2 class="card__place">
                             Домбай
-                        </p>
+                        </h2>
                         <button class="card__btn" type="button"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img class="card__photo" src="./images/places/pic-2.jpg" alt="Гора Эльбрус">
                     <div class="card__caption">
-                        <p class="card__place">
+                        <h2 class="card__place">
                             Гора Эльбрус
-                        </p>
+                        </h2>
                         <button class="card__btn" type="button"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img class="card__photo" src="./images/places/pic-3.jpg" alt="Домбай">
                     <div class="card__caption">
-                        <p class="card__place">
+                        <h2 class="card__place">
                             Домбай
-                        </p>
+                        </h2>
                         <button class="card__btn" type="button"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img class="card__photo" src="./images/places/pic-1.jpg" alt="Карачаевск">
                     <div class="card__caption">
-                        <p class="card__place">
+                        <h2 class="card__place">
                             Карачаево-Черкессия
-                        </p>
+                        </h2>
                         <button class="card__btn" type="button"></button>
                     </div>
                 </div>
             </section>
         </main>
-        <section class="popup popup_type_edit-profile">
+        <!-- я удалила сложные модификаторы из этой формы, но думаю они пригодятся в будущем. ведь будет еще как минимум попап для добавления карточек. И кроме всего - большое вам спасибо за ревью и подробные обьяснения!! &#x2764; -->
+        <section class="popup">
             <div class="popup__container">
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__form popup__form_type_edit-profile" name="edit-profile-popup">
-                    <input class="popup__input popup__input_name" type="text" value="Жак-Ив Кусто" name="name">
-                    <input class="popup__input popup__input_detail" type="text" value="Исследователь океана" name="detail">
+                <form class="popup__form" name="edit-profile-popup">
+                    <input class="popup__input popup__input_type_name" type="text" value="Жак-Ив Кусто" name="name">
+                    <input class="popup__input popup__input_type_detail" type="text" value="Исследователь океана" name="detail">
                     <button type="submit" class="popup__save">Сохранить</button>
                 </form>
                 <button type="button" class="popup__close popup__close_form_edit-profile"></button>
