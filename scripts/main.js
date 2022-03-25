@@ -11,44 +11,39 @@ document.addEventListener("DOMContentLoaded", function (event) {
   let detailContent;
   let valueInputName;
   let valueInputDetail;
+  
   //добавление карточек на страницу
-  const cardTemplate = document.querySelector('#card').content; 
-  const sectionCards = document.querySelector('.cards')
+  const cardTemplate = document.querySelector("#card").content;
+  const sectionCards = document.querySelector(".cards");
   const initialCards = [
     {
-      name: 'Карачаевск',
-      link: './images/places/pic-1.jpg',
-      alt: 'Карачаевск'
+      name: "Архыз",
+      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
     },
     {
-      name: 'Гора Эльбрус',
-      link: './images/places/pic-2.jpg',
-      alt: 'Гора Эльбрус'
+      name: "Челябинская область",
+      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
     },
     {
-      name: 'Домбай',
-      link: './images/places/pic-3.jpg',
-      alt: 'Домбай'
+      name: "Иваново",
+      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
     },
     {
-      name: 'Гора Эльбрус',
-      link: './images/places/pic-2.jpg',
-      alt: 'Гора Эльбрус'
+      name: "Камчатка",
+      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
     },
     {
-      name: 'Домбай',
-      link: './images/places/pic-3.jpg',
-      alt: 'Домбай'
+      name: "Холмогорский район",
+      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
     },
     {
-      name: 'Карачаевск',
-      link: './images/places/pic-1.jpg',
-      alt: 'Карачаевск'
+      name: "Байкал",
+      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
     },
   ];
 
   //форма добавления карточки
-  const addCardBtn =  document.querySelector(".profile__btn_add");
+  const addCardBtn = document.querySelector(".profile__btn_add");
   const addCardPopup = document.querySelector("#add-card");
   const addCardForm = document.querySelector("[name='add-card-popup']");
   const inputNewCardTitle = document.querySelector(".popup__input_type_title");
@@ -56,13 +51,25 @@ document.addEventListener("DOMContentLoaded", function (event) {
   let valueInputTitle;
   let valueInputLink;
 
+  //открытие попапа с картинкой
+  const popupImage = document.querySelector(".popup__image");
+  const popupImageTitle = document.querySelector(".popup__image-title");
+  const popupShowFullImage = document.querySelector("#card-image");
+  let cardItems;
+
   function openPopup() {
     popup.classList.add("popup_opened");
     fillForm();
   }
 
   function closePopup(evt) {
-    evt.target.closest('.popup').classList.remove("popup_opened");
+    evt.target.closest(".popup").classList.remove("popup_opened");
+    //проверка если действие было на попапе для добавления карточки - очистить инпуты
+    if (evt.target.classList.contains("popup__close_add-card")) {
+      inputNewCardTitle.value = "";
+      inputNewCardLink.value = "";
+      console.log(11);
+    }
   }
 
   function fillForm() {
@@ -92,38 +99,56 @@ document.addEventListener("DOMContentLoaded", function (event) {
     evt.preventDefault();
     valueInputTitle = inputNewCardTitle.value;
     valueInputLink = inputNewCardLink.value;
-    console.log(valueInputTitle,valueInputLink)
     let newCard = {
       name: valueInputTitle,
       link: valueInputLink,
-      alt: valueInputTitle
-    }
-    createCard(newCard)
+    };
+    createCard(newCard);
+    inputNewCardTitle.value = "";
+    inputNewCardLink.value = "";
     addCardPopup.classList.remove("popup_opened");
   }
 
-  function createCards () {
+  function createCards() {
     initialCards.forEach(createCard);
   }
 
-  function createCard (card) {
-    const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
+  function createCard(card) {
+    const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
     // наполняем содержимым
-    cardElement.querySelector('.card__photo').src = card.link;
-    cardElement.querySelector('.card__photo').alt = card.alt;
-    cardElement.querySelector('.card__place').textContent = card.name;
+    cardElement.querySelector(".card__photo").src = card.link;
+    cardElement.querySelector(".card__photo").alt = card.name;
+    cardElement.querySelector(".card__place").textContent = card.name;
     // отображаем на странице
-    sectionCards.prepend(cardElement)
+    sectionCards.prepend(cardElement);
+    initialCardItems();
+  }
+
+  function openImagePopup(evt) {
+    popupImage.src = evt.target.src;
+    popupImage.alt = evt.target.alt;
+    popupImageTitle.textContent = evt.target.alt;
+    popupShowFullImage.classList.add("popup_opened");
+  }
+
+  //функция используется для пересчета всех карточек - после добавления, удаления их со страницы
+  function initialCardItems() {
+    cardItems = document.querySelectorAll(".card__photo");
+    for (let i = 0; i < cardItems.length; i++) {
+      cardItems[i].addEventListener("click", openImagePopup);
+    }
   }
 
   createCards();
   editProfile.addEventListener("click", openPopup);
   formPopup.addEventListener("submit", formSubmitHandler);
-  for (let i=0; i < closeButtons.length; i++) {
+  for (let i = 0; i < closeButtons.length; i++) {
     closeButtons[i].addEventListener("click", closePopup);
   }
 
-  //добавление новой карточки
-  addCardBtn.addEventListener("click", () => addCardPopup.classList.add("popup_opened"));
+  //открытие попапа и добавление новой карточки
+  addCardBtn.addEventListener("click", () =>
+    addCardPopup.classList.add("popup_opened")
+  );
   addCardForm.addEventListener("submit", addNewCardFormSubmitHandler);
 });
