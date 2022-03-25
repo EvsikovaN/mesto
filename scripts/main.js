@@ -127,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     sectionCards.prepend(cardElement);
     initialCardItems();
     initialLikeItems();
+    initialTrashItems();
   }
 
   function openImagePopup(evt) {
