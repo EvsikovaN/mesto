@@ -28,65 +28,9 @@
                     <img src="./images/icons/add.svg" alt="добавить изображение">
                 </button>
             </section>
-            <section class="cards">
-                <div class="card">
-                    <img class="card__photo" src="./images/places/pic-1.jpg" alt="Карачаевск">
-                    <div class="card__caption">
-                        <h2 class="card__place">
-                            Карачаевск
-                        </h2>
-                        <button class="card__btn" type="button"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__photo" src="./images/places/pic-2.jpg" alt="Гора Эльбрус">
-                    <div class="card__caption">
-                        <h2 class="card__place">
-                            Гора Эльбрус
-                        </h2>
-                        <button class="card__btn" type="button"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__photo" src="./images/places/pic-3.jpg" alt="Домбай">
-                    <div class="card__caption">
-                        <h2 class="card__place">
-                            Домбай
-                        </h2>
-                        <button class="card__btn" type="button"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__photo" src="./images/places/pic-2.jpg" alt="Гора Эльбрус">
-                    <div class="card__caption">
-                        <h2 class="card__place">
-                            Гора Эльбрус
-                        </h2>
-                        <button class="card__btn" type="button"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__photo" src="./images/places/pic-3.jpg" alt="Домбай">
-                    <div class="card__caption">
-                        <h2 class="card__place">
-                            Домбай
-                        </h2>
-                        <button class="card__btn" type="button"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__photo" src="./images/places/pic-1.jpg" alt="Карачаевск">
-                    <div class="card__caption">
-                        <h2 class="card__place">
-                            Карачаево-Черкессия
-                        </h2>
-                        <button class="card__btn" type="button"></button>
-                    </div>
-                </div>
-            </section>
+            <section class="cards"></section>
         </main>
-        <!-- я удалила сложные модификаторы из этой формы, но думаю они пригодятся в будущем. ведь будет еще как минимум попап для добавления карточек. И кроме всего - большое вам спасибо за ревью и подробные обьяснения!! &#x2764; -->
-        <section class="popup">
+        <section class="popup" id="edit-profile">
             <div class="popup__container">
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form class="popup__form" name="edit-profile-popup">
@@ -94,13 +38,41 @@
                     <input class="popup__input popup__input_type_detail" type="text" value="Исследователь океана" name="detail">
                     <button type="submit" class="popup__save">Сохранить</button>
                 </form>
-                <button type="button" class="popup__close popup__close_form_edit-profile"></button>
+                <button type="button" class="popup__close"></button>
+            </div>
+        </section>
+        <section class="popup" id="add-card">
+            <div class="popup__container">
+                <h2 class="popup__title">Новое место</h2>
+                <form class="popup__form" name="add-card-popup">
+                    <input class="popup__input popup__input_type_title" type="text" placeholder="Название" value="" name="name">
+                    <input class="popup__input popup__input_type_link" type="text" placeholder="Сылка на картинку" value="" name="detail">
+                    <button type="submit" class="popup__save">Создать</button>
+                </form>
+                <button type="button" class="popup__close popup__close_add-card"></button>
+            </div>
+        </section>
+        <section class="popup" id="card-image">
+            <div class="popup__image-container">
+                <img class='popup__image' src="" alt="">
+                <h2 class="popup__image-title"></h2>
+                <button type="button" class="popup__close"></button>
             </div>
         </section>
         
         <footer class="footer">
             <p class="footer__copyright">&copy;&nbsp;2020 Mesto Russia</p>
         </footer>
+        <template id="card">
+            <div class="card">
+                <img class="card__photo" src="" alt="">
+                <div class="card__caption">
+                    <h2 class="card__place"></h2>
+                    <button class="card__btn" type="button"></button>
+                </div>
+                <button class="trash" type="button"></button>
+            </div>
+        </template>
     </div>
 <script src="./scripts/main.js"></script>
 </body>
