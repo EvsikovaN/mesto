@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   let detailContent;
   let valueInputName;
   let valueInputDetail;
-  
+
   //добавление карточек на страницу
   const cardTemplate = document.querySelector("#card").content;
   const sectionCards = document.querySelector(".cards");
@@ -59,6 +59,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   //лайк карточки
   let likeItems;
+  //удаление карточки
+  let trashItems;
 
   function openPopup() {
     popup.classList.add("popup_opened");
@@ -71,7 +73,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     if (evt.target.classList.contains("popup__close_add-card")) {
       inputNewCardTitle.value = "";
       inputNewCardLink.value = "";
-      console.log(11);
     }
   }
 
@@ -144,14 +145,26 @@ document.addEventListener("DOMContentLoaded", function (event) {
   }
 
   function initialLikeItems() {
-    likeItems = document.querySelectorAll('.card__btn')
+    likeItems = document.querySelectorAll(".card__btn");
     for (let i = 0; i < likeItems.length; i++) {
-      likeItems[i].addEventListener("click", (evt) => evt.target.classList.add('card__btn_like-active'));
+      likeItems[i].addEventListener("click", (evt) =>
+        evt.target.classList.add("card__btn_like-active")
+      );
+    }
+  }
+
+  function initialTrashItems() {
+    trashItems = document.querySelectorAll(".trash");
+    for (let i = 0; i < trashItems.length; i++) {
+      trashItems[i].addEventListener("click", (evt) =>
+        evt.target.closest(".card").remove()
+      );
     }
   }
 
   createCards();
-  initialLikeItems()
+  initialLikeItems();
+  initialTrashItems();
   editProfile.addEventListener("click", openPopup);
   formPopup.addEventListener("submit", formSubmitHandler);
   for (let i = 0; i < closeButtons.length; i++) {
