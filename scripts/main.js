@@ -7,6 +7,41 @@ document.addEventListener("DOMContentLoaded", function (event) {
   const inputName = document.querySelector(".popup__input_type_name");
   const inputDetail = document.querySelector(".popup__input_type_detail");
   const formPopup = document.querySelector(".popup__form");
+  //добавление карточек на страницу
+  const cardTemplate = document.querySelector('#card').content; 
+  const sectionCards = document.querySelector('.cards')
+  const initialCards = [
+    {
+      name: 'Карачаевск',
+      link: './images/places/pic-1.jpg',
+      alt: 'Карачаевск'
+    },
+    {
+      name: 'Гора Эльбрус',
+      link: './images/places/pic-2.jpg',
+      alt: 'Гора Эльбрус'
+    },
+    {
+      name: 'Домбай',
+      link: './images/places/pic-3.jpg',
+      alt: 'Домбай'
+    },
+    {
+      name: 'Гора Эльбрус',
+      link: './images/places/pic-2.jpg',
+      alt: 'Гора Эльбрус'
+    },
+    {
+      name: 'Домбай',
+      link: './images/places/pic-3.jpg',
+      alt: 'Домбай'
+    },
+    {
+      name: 'Карачаевск',
+      link: './images/places/pic-1.jpg',
+      alt: 'Карачаевск'
+    },
+  ];
 
   let nameContent;
   let detailContent;
@@ -45,6 +80,19 @@ document.addEventListener("DOMContentLoaded", function (event) {
     closePopup();
   }
 
+  function createsCards () {
+    initialCards.forEach(function (card) {
+      const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
+      // наполняем содержимым
+      cardElement.querySelector('.card__photo').src = card.link;
+      cardElement.querySelector('.card__photo').alt = card.alt;
+      cardElement.querySelector('.card__place').textContent = card.name;
+      // отображаем на странице
+      sectionCards.append(cardElement)
+    });
+  }
+
+  createsCards();
   editProfile.addEventListener("click", openPopup);
   closeButton.addEventListener("click", closePopup);
   formPopup.addEventListener("submit", formSubmitHandler);
