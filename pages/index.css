@@ -21,6 +21,7 @@
 @import url(../blocks/card/__photo/card__photo.css);
 @import url(../blocks/card/__place/card__place.css);
 @import url(../blocks/card/__btn/card__btn.css);
+@import url(../blocks/card/__btn/_like-active/card__btn_like-active.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__container/popup__container.css);

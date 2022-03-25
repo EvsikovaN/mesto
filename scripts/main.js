@@ -57,6 +57,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
   const popupShowFullImage = document.querySelector("#card-image");
   let cardItems;
 
+  //лайк карточки
+  let likeItems;
+
   function openPopup() {
     popup.classList.add("popup_opened");
     fillForm();
@@ -122,6 +125,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // отображаем на странице
     sectionCards.prepend(cardElement);
     initialCardItems();
+    initialLikeItems();
   }
 
   function openImagePopup(evt) {
@@ -139,7 +143,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 
+  function initialLikeItems() {
+    likeItems = document.querySelectorAll('.card__btn')
+    for (let i = 0; i < likeItems.length; i++) {
+      likeItems[i].addEventListener("click", (evt) => evt.target.classList.add('card__btn_like-active'));
+    }
+  }
+
   createCards();
+  initialLikeItems()
   editProfile.addEventListener("click", openPopup);
   formPopup.addEventListener("submit", formSubmitHandler);
   for (let i = 0; i < closeButtons.length; i++) {
