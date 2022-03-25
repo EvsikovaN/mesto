@@ -30,7 +30,7 @@
             </section>
             <section class="cards"></section>
         </main>
-        <section class="popup">
+        <section class="popup" id="edit-profile">
             <div class="popup__container">
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form class="popup__form" name="edit-profile-popup">
@@ -38,7 +38,18 @@
                     <input class="popup__input popup__input_type_detail" type="text" value="Исследователь океана" name="detail">
                     <button type="submit" class="popup__save">Сохранить</button>
                 </form>
-                <button type="button" class="popup__close popup__close_form_edit-profile"></button>
+                <button type="button" class="popup__close"></button>
+            </div>
+        </section>
+        <section class="popup" id="add-card">
+            <div class="popup__container">
+                <h2 class="popup__title">Новое место</h2>
+                <form class="popup__form" name="add-card-popup">
+                    <input class="popup__input popup__input_type_title" type="text" placeholder="Название" value="" name="name">
+                    <input class="popup__input popup__input_type_link" type="text" placeholder="Сылка на картинку" value="" name="detail">
+                    <button type="submit" class="popup__save">Создать</button>
+                </form>
+                <button type="button" class="popup__close"></button>
             </div>
         </section>
         
