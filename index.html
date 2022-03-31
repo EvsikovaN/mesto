@@ -30,6 +30,11 @@
             </section>
             <section class="cards"></section>
         </main>
+        
+        <footer class="footer">
+            <p class="footer__copyright">&copy;&nbsp;2020 Mesto Russia</p>
+        </footer>
+
         <section class="popup" id="edit-profile">
             <div class="popup__container">
                 <h2 class="popup__title">Редактировать профиль</h2>
@@ -41,6 +46,7 @@
                 <button type="button" class="popup__close"></button>
             </div>
         </section>
+
         <section class="popup" id="add-card">
             <div class="popup__container">
                 <h2 class="popup__title">Новое место</h2>
@@ -52,23 +58,21 @@
                 <button type="button" class="popup__close popup__close_add-card"></button>
             </div>
         </section>
-        <section class="popup" id="card-image">
+
+        <section class="popup popup_image" id="card-image">
             <div class="popup__image-container">
-                <img class='popup__image' src="" alt="">
+                <img class='popup__image' src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="">
                 <h2 class="popup__image-title"></h2>
                 <button type="button" class="popup__close"></button>
             </div>
         </section>
         
-        <footer class="footer">
-            <p class="footer__copyright">&copy;&nbsp;2020 Mesto Russia</p>
-        </footer>
         <template id="card">
             <div class="card">
-                <img class="card__photo" src="" alt="">
+                <img class="card__photo" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="">
                 <div class="card__caption">
                     <h2 class="card__place"></h2>
-                    <button class="card__btn" type="button"></button>
+                    <button class="card__btn card__btn_like" type="button"></button>
                 </div>
                 <button class="trash" type="button"></button>
             </div>
