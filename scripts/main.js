@@ -153,10 +153,12 @@ function removeCard(evt) {
   evt.target.closest(".card").remove();
 }
 
-document.addEventListener('keydown', evt => {
+function pressEscape(evt){
   const popup = document.querySelector('.popup_opened')
   popup && evt.key === 'Escape' ? closePopup(popup) : false;
-})
+}
+
+document.addEventListener('keydown', pressEscape)
 
 //отрисовка карточек на странице
 cardsArray.forEach(renderCard);
