@@ -38,9 +38,15 @@
         <section class="popup" id="edit-profile">
             <div class="popup__container">
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__form" name="edit-profile-popup">
-                    <input class="popup__input popup__input_type_name" type="text" value="Жак-Ив Кусто" name="name">
-                    <input class="popup__input popup__input_type_detail" type="text" value="Исследователь океана" name="detail">
+                <form class="popup__form" name="edit-profile-popup" action="#" method="post" novalidate>
+                    <section class="popup__form-section">
+                        <input class="popup__input popup__input_type_name" type="text" value="Жак-Ив Кусто" name="name" minlength="2" maxlength="40" required>
+                        <span class="popup__form-error-message"></span>
+                    </section>
+                    <section class="popup__form-section">
+                        <input class="popup__input popup__input_type_detail" type="text" value="Исследователь океана" name="detail" minlength="2" maxlength="200" required>
+                        <span class="popup__form-error-message"></span>
+                    </section>
                     <button type="submit" class="popup__save">Сохранить</button>
                 </form>
                 <button type="button" class="popup__close"></button>
@@ -50,9 +56,15 @@
         <section class="popup" id="add-card">
             <div class="popup__container">
                 <h2 class="popup__title">Новое место</h2>
-                <form class="popup__form" name="add-card-popup">
-                    <input class="popup__input popup__input_type_title" type="text" placeholder="Название" value="" name="name">
-                    <input class="popup__input popup__input_type_link" type="text" placeholder="Сылка на картинку" value="" name="detail">
+                <form class="popup__form" name="add-card-popup" action="#" method="post" novalidate>
+                    <section class="popup__form-section">
+                        <input class="popup__input popup__input_type_title" type="text" placeholder="Название" value="" name="title" required minlength="2" maxlength="30">
+                        <span class="popup__form-error-message"></span>
+                    </section>
+                    <section class="popup__form-section">
+                        <input class="popup__input popup__input_type_link" type="text" placeholder="Сылка на картинку" value="" name="link" required pattern="(http|https):\/\/([\w.]+\/?)\S*">
+                        <span class="popup__form-error-message"></span>
+                    </section>
                     <button type="submit" class="popup__save">Создать</button>
                 </form>
                 <button type="button" class="popup__close popup__close_add-card"></button>
@@ -79,5 +91,6 @@
         </template>
     </div>
 <script src="./scripts/main.js"></script>
+<script src="./scripts/validate.js"></script>
 </body>
 </html>
