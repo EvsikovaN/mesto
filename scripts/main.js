@@ -48,6 +48,16 @@ const popupOpenImage = document.querySelector("#card-image");
 const formEditProfile = document.querySelector("[name='edit-profile-popup']");
 const formAddNewCard = document.querySelector("[name='add-card-popup']");
 
+const objectSettings = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__save",
+  inactiveButtonClass: "popup__save_disabled",
+  inputErrorClass: "popup__input_error",
+  errorClass: "popup__form-error-message",
+  formSection: ".popup__form-section"
+};
+
 //создание карточки и установка слушателей
 function addCard(name, link) {
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
@@ -106,6 +116,7 @@ function fillForm() {
 //форма сохранить редактирование данных профиля
 function formSubmitHandler(evt) {
   evt.preventDefault();
+  enableValidation(objectSettings);
   //получили новые значения, которые ввел пользователь
   const valueInputName = inputName.value;
   const valueInputDetail = inputDetail.value;
@@ -120,6 +131,7 @@ function formSubmitHandler(evt) {
 //форма создать новую карточку
 function addNewCardFormSubmitHandler(evt) {
   evt.preventDefault();
+  enableValidation(objectSettings);
   const valueInputTitle = inputNewCardTitle.value;
   const valueInputLink = inputNewCardLink.value;
   const newCard = {
@@ -153,10 +165,12 @@ function removeCard(evt) {
   evt.target.closest(".card").remove();
 }
 
-document.addEventListener('keydown', evt => {
+function pressEscape(evt){
   const popup = document.querySelector('.popup_opened')
   popup && evt.key === 'Escape' ? closePopup(popup) : false;
-})
+}
+
+document.addEventListener('keydown', pressEscape)
 
 //отрисовка карточек на странице
 cardsArray.forEach(renderCard);
