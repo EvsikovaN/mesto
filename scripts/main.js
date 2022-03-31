@@ -153,12 +153,17 @@ function removeCard(evt) {
   evt.target.closest(".card").remove();
 }
 
+document.addEventListener('keydown', evt => {
+  const popup = document.querySelector('.popup_opened')
+  popup && evt.key === 'Escape' ? closePopup(popup) : false;
+})
+
 //отрисовка карточек на странице
 cardsArray.forEach(renderCard);
 //добавление слушателей
 popups.forEach((popup) => {
   popup.addEventListener("click", (evt) => {
-    if (evt.target.classList.contains("popup__close")) {
+    if (evt.target.classList.contains("popup__close") || evt.target.classList.contains("popup_opened")) {
       closePopup(popup);
     }
   });
