@@ -1,5 +1,14 @@
+const objectSettings = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__save",
+  inactiveButtonClass: "popup__save_disabled",
+  inputErrorClass: "popup__input_error",
+  errorClass: "popup__form-error-message",
+  formSection: ".popup__form-section"
+};
+
 function enableValidation(objectSettings) {
-    console.log(3)
   const formList = document.querySelectorAll(`${objectSettings.formSelector}`);
   formList.forEach((formElement) => {
     const handleFormSubmit = (event) => {
@@ -10,6 +19,7 @@ function enableValidation(objectSettings) {
   });
 };
 
+//formElement здесь и в последующих функциях берется из цикла в enableValidation. а все строки-селекторы содержатся в объекте валидации objectSettings и передаются в enableValidation
 function setEventListeners(formElement) {
     const inputList = formElement.querySelectorAll(`${objectSettings.inputSelector}`);
     const submitbuttonElement = formElement.querySelector(`${objectSettings.submitButtonSelector}`);
