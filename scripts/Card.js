@@ -17,12 +17,12 @@ export class Card {
     return cardElement;
   }
 
-  _toggleLike(evt) {
-    evt.target.classList.toggle("card__btn_like-active");
+  _toggleLike() {
+    this._element.querySelector('.card__btn_like').classList.toggle("card__btn_like-active");
   }
 
-  _removeCard(evt) {
-    evt.target.closest(".card").remove();
+  _removeCard() {
+    this._element.remove()
   }
 
   _openImagePopup(evt) {
@@ -33,8 +33,12 @@ export class Card {
   }
 
   _setEventListeners() {
-    this._element.querySelector(".card__btn_like").addEventListener("click", this._toggleLike);
-    this._element.querySelector(".trash").addEventListener("click", this._removeCard);
+    this._element.querySelector(".card__btn_like").addEventListener("click", () => {
+      this._toggleLike();
+    });
+    this._element.querySelector(".trash").addEventListener("click", () => {
+      this._removeCard();
+    });
     this._element.querySelector(".card__photo").addEventListener("click", this._openImagePopup);
   }
 
