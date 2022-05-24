@@ -36,20 +36,20 @@ export class FormValidator {
     const isInputValid = !inputElement.validity.valid;
     if (isInputValid) {
       const errorMessage = inputElement.validationMessage;
-      this._showError(formElement, inputElement, errorMessage);
+      this._showError(inputElement, errorMessage);
     } else {
-      this._hideError(formElement, inputElement);
+      this._hideError(inputElement);
     }
   }
 
-  _showError(formElement, inputElement, errorMessage) {
+  _showError(inputElement, errorMessage) {
     const errorElement = this._getErrorElement(inputElement);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(`${this._data.errorClass}_active`);
     inputElement.classList.add(`${this._data.inputErrorClass}`);
   }
 
-  _hideError(formElement, inputElement) {
+  _hideError( inputElement) {
     const errorElement = this._getErrorElement(inputElement);
     errorElement.textContent = "";
     errorElement.classList.remove(`${this._data.errorClass}_active`);
@@ -58,6 +58,15 @@ export class FormValidator {
 
   _getErrorElement(inputElement) {
     return inputElement.closest(`${this._data.formSection}`).querySelector(`.${this._data.errorClass}`);
+  }
+
+  resetInputError() {
+    const inputs = this._form.querySelectorAll(`${this._data.inputSelector}`);
+    const btnSubmit = this._form.querySelector(`${this._data.submitButtonSelector}`);
+    this._toggleButtonState(inputs,btnSubmit)
+    inputs.forEach((inputELement) => {
+      this._hideError(inputELement);
+    });
   }
 
   enableValidation() {

@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
 </head>
 <body class="page">
     <div class="page__container">
         <header class="header">
-            <img src="./images/icons/logo.svg" alt="логотип" class="header__logo">
+            <img src="<%=require('./images/icons/logo.svg')%>" alt="логотип" class="header__logo">
         </header>
         <main class="main">
             <section class="profile">
                 <div class="row">
-                    <img class="profile__avatar" src="./images/common/avatar.jpg" alt="фото профиля">
+                    <img class="profile__avatar" src="<%=require('./images/common/avatar.jpg')%>" alt="фото профиля">
                     <div class="profile__info">
                         <div class="flex-wrapper">
                             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -25,7 +24,7 @@
                     </div>
                 </div>
                 <button type="button" class="profile__btn profile__btn_add">
-                    <img src="./images/icons/add.svg" alt="добавить изображение">
+                    <img src="<%=require('./images/icons/add.svg')%>" alt="добавить изображение">
                 </button>
             </section>
             <section class="cards"></section>
@@ -90,7 +89,5 @@
             </div>
         </template>
     </div>
-<script type='module' src="./scripts/index.js"></script>
-<script type='module' src="./scripts/FormValidator.js"></script>
 </body>
 </html>

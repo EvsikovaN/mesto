@@ -25,28 +25,16 @@ export const cardsArray = [
   },
 ];
 
-export const sectionCards = document.querySelector(".cards");
-
-export const profileName = document.querySelector(".profile__name");
-export const profileDetail = document.querySelector(".profile__detail");
+export const containerSelector = '.cards';
 export const inputName = document.querySelector(".popup__input_type_name");
 export const inputDetail = document.querySelector(".popup__input_type_detail");
 export const inputNewCardTitle = document.querySelector(".popup__input_type_title");
 export const inputNewCardLink = document.querySelector(".popup__input_type_link");
-export const pictureImagePopup = document.querySelector(".popup__image");
-export const titleImagePopup = document.querySelector(".popup__image-title");
-
 export const btnEditProfile = document.querySelector(".profile__btn_edit");
 export const btnAddNewCard = document.querySelector(".profile__btn_add");
-
-export const popups = document.querySelectorAll(".popup");
-export const popupEditProfile = document.querySelector("#edit-profile");
-export const popupAddNewCard = document.querySelector("#add-card");
-export const popupOpenImage = document.querySelector("#card-image");
-
 export const formEditProfile = document.querySelector("[name='edit-profile-popup']");
 export const formAddNewCard = document.querySelector("[name='add-card-popup']");
-
+export const formList = document.querySelectorAll(".popup__form");
 
 export const objectSettings = {
   formSelector: ".popup__form",
@@ -57,5 +45,3 @@ export const objectSettings = {
   errorClass: "popup__form-error-message",
   formSection: ".popup__form-section",
 };
-
-export const formList = document.querySelectorAll(".popup__form");

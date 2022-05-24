@@ -1,11 +1,9 @@
-import {pictureImagePopup, titleImagePopup, popupOpenImage} from '../scripts/constants.js';
-import {openPopup} from '../scripts/utils.js';
-
 export class Card {
-  constructor(data, selector) {
+  constructor(data, selector, handleCardClick) {
     this._image = data.link;
     this._title = data.name;
     this._selector = selector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getElement() {
@@ -25,13 +23,6 @@ export class Card {
     this._element.remove()
   }
 
-  _openImagePopup(evt) {
-    pictureImagePopup.src = evt.target.src;
-    pictureImagePopup.alt = evt.target.alt;
-    titleImagePopup.textContent = evt.target.alt;
-    openPopup(popupOpenImage);
-  }
-
   _setEventListeners() {
     this._element.querySelector(".card__btn_like").addEventListener("click", () => {
       this._toggleLike();
@@ -39,7 +30,9 @@ export class Card {
     this._element.querySelector(".trash").addEventListener("click", () => {
       this._removeCard();
     });
-    this._element.querySelector(".card__photo").addEventListener("click", this._openImagePopup);
+    this._element.querySelector(".card__photo").addEventListener("click", () => {
+      this._handleCardClick(this._title, this._image);
+    });
   }
 
   generate() {
