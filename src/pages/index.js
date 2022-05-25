@@ -1,18 +1,22 @@
-import '../../pages/index.css';
+import './index.css';
 
-import {cardsArray, btnAddNewCard, btnEditProfile, objectSettings, containerSelector, inputName, inputDetail, inputNewCardTitle, inputNewCardLink, formEditProfile, formAddNewCard} from '../utils/constants.js';
-import {FormValidator} from '../components/FormValidator.js';
-import {Card} from "../components/Card.js";
-import {Section} from  '../components/Section.js';
-import {PopupWithImage} from  '../components/PopupWithImage.js';
-import {PopupWithForm} from  '../components/PopupWithForm.js';
-import {UserInfo} from  '../components/UserInfo.js';
+import {cardsArray, btnAddNewCard, btnEditProfile, objectSettings, containerSelector, inputName, inputDetail, inputNewCardTitle, inputNewCardLink, formEditProfile, formAddNewCard} from '../scripts/utils/constants.js';
+import {FormValidator} from '../scripts/components/FormValidator.js';
+import {Card} from "../scripts/components/Card.js";
+import {Section} from  '../scripts/components/Section.js';
+import {PopupWithImage} from  '../scripts/components/PopupWithImage.js';
+import {PopupWithForm} from  '../scripts/components/PopupWithForm.js';
+import {UserInfo} from  '../scripts/components/UserInfo.js';
 
-const renderNewCard = (item) => {
+const createCard = (item) => {
   const card = new Card(item, "#card", handleCardClick);
   const cardElement = card.generate();
+  return cardElement
+}
 
-  cardsList.addItem(cardElement);
+const renderNewCard = (item) => {
+  const newCard = createCard(item)
+  cardsList.addItem(newCard);
 }
 
 //генерация карточек
@@ -54,50 +58,31 @@ const formNewCard = new FormValidator(objectSettings, formAddNewCard)
 formNewCard.enableValidation();
 
 //попап редактирования профиля
-const popupEditProfile = new PopupWithForm({
-  popupSelector: '#edit-profile',
-  handleSabmitPopupWithForm: () => {
-  //получили новые значения, которые ввел пользователь
-  const valueInputName = inputName.value;
-  const valueInputDetail = inputDetail.value;
-  //записали их в профиль
-  dataUser.setUserInfo({name: valueInputName, detail: valueInputDetail})
+const popupEditProfile = new PopupWithForm('#edit-profile', (item) => {
+    dataUser.setUserInfo(item)
   }
-})
+)
 
 //добавление слушателя на попап редактировать профиль
 popupEditProfile.setEventListeners();
 
 //клик на кнопку редактировать профиль
 btnEditProfile.addEventListener("click", () => {
-  formProfile.resetInputError();
   const profileData = dataUser.getUserInfo();
   //заполнили этими значениями поля формы
   inputName.value = profileData.name;
-  inputDetail.value = profileData.detail; 
+  inputDetail.value = profileData.detail;
+  //проверка заполнения полей формы и установка состояния кнопки 
+  formProfile.resetInputError();
   popupEditProfile.open()
 });
 
-
 //попап добавить карточку
-const popupAddCard = new PopupWithForm({
-  popupSelector: '#add-card',
-  handleSabmitPopupWithForm: () => {
-    const valueInputTitle = inputNewCardTitle.value;
-    const valueInputLink = inputNewCardLink.value;
-    const dataCard = [{
-      name: valueInputTitle,
-      link: valueInputLink,
-    }];
-    const newCard = new Section({
-      items: dataCard,
-      renderer: renderNewCard
-      },
-      containerSelector
-    );
-    newCard.renderItems();
+const popupAddCard = new PopupWithForm('#add-card', (item) => {
+    const cardElement = createCard(item)
+    cardsList.addItem(cardElement);
   }
-})
+)
 
 //установка слушателя на попап добавления новой карточки
 popupAddCard.setEventListeners();
