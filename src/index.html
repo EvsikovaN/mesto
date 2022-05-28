@@ -14,13 +14,13 @@
         <main class="main">
             <section class="profile">
                 <div class="row">
-                    <img class="profile__avatar" src="<%=require('./images/common/avatar.jpg')%>" alt="фото профиля">
+                    <button type="button" class="profile__btn profile__btn_avatar"></button>
                     <div class="profile__info">
                         <div class="flex-wrapper">
-                            <h1 class="profile__name">Жак-Ив Кусто</h1>
+                            <h1 class="profile__name"></h1>
                             <button type="button" class="profile__btn profile__btn_edit"></button>
                         </div>
-                        <p class="profile__detail">Исследователь океана</p>
+                        <p class="profile__detail"></p>
                     </div>
                 </div>
                 <button type="button" class="profile__btn profile__btn_add">
@@ -39,11 +39,25 @@
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form class="popup__form" name="edit-profile-popup" action="#" method="post" novalidate>
                     <section class="popup__form-section">
-                        <input class="popup__input popup__input_type_name" type="text" value="Жак-Ив Кусто" name="name" minlength="2" maxlength="40" required>
+                        <input class="popup__input popup__input_type_name" type="text"  name="name" minlength="2" maxlength="40" required>
                         <span class="popup__form-error-message"></span>
                     </section>
                     <section class="popup__form-section">
-                        <input class="popup__input popup__input_type_detail" type="text" value="Исследователь океана" name="detail" minlength="2" maxlength="200" required>
+                        <input class="popup__input popup__input_type_detail" type="text"  name="about" minlength="2" maxlength="200" required>
+                        <span class="popup__form-error-message"></span>
+                    </section>
+                    <button type="submit" class="popup__save">Сохранить</button>
+                </form>
+                <button type="button" class="popup__close"></button>
+            </div>
+        </section>
+
+        <section class="popup" id="edit-avatar">
+            <div class="popup__container">
+                <h2 class="popup__title">Обновить аватар</h2>
+                <form class="popup__form" name="edit-avatar-popup" action="#" method="post" novalidate>
+                    <section class="popup__form-section">
+                        <input class="popup__input popup__input_type_link" type="text"  name="link" minlength="2"  required placeholder="Введите ссылку на изображение">
                         <span class="popup__form-error-message"></span>
                     </section>
                     <button type="submit" class="popup__save">Сохранить</button>
@@ -77,13 +91,27 @@
                 <button type="button" class="popup__close"></button>
             </div>
         </section>
+
+        <section class="popup" id="delete-card">
+            <div class="popup__container">
+                <h2 class="popup__title">Вы уверены?</h2>
+                <form class="popup__form" name="delete-card-popup" action="#" method="post" novalidate>
+                    <button type="submit" class="popup__save popup__confirm">Да</button>
+                </form>
+                <button type="button" class="popup__close"></button>
+            </div>
+        </section>
         
         <template id="card">
             <div class="card">
                 <img class="card__photo" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="">
                 <div class="card__caption">
                     <h2 class="card__place"></h2>
-                    <button class="card__btn card__btn_like" type="button"></button>
+                    <div class="like">
+                        <button class="card__btn card__btn_like" type="button"></button>
+                        <span class="like__counter"></span>
+                    </div>
+                    
                 </div>
                 <button class="trash" type="button"></button>
             </div>
