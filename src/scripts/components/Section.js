@@ -4,8 +4,8 @@ export class Section {
     this._container = document.querySelector(containerSelector);
   }
 
-  renderItems(items,idUser) {
-    items.forEach(item => this._renderer(item,idUser));
+  renderItems(items,userId) {
+    items.reverse().forEach(item => this._renderer(item,userId));
   }
 
   addItem(element) {

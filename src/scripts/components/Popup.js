@@ -2,8 +2,8 @@ export class Popup {
   constructor(popupSelector) {
     this._popupElement = document.querySelector(popupSelector);
     this._handleEscClose = this._handleEscClose.bind(this);
+    this._btnSave = this._popupElement.querySelector(".popup__form .popup__save");
   }
-
   _handleEscClose(evt) {
     if (evt.key === "Escape") {
       this.close();
@@ -14,6 +14,10 @@ export class Popup {
     this._popupElement.classList.add("popup_opened");
     document.addEventListener("keydown", this._handleEscClose);
     
+  }
+
+  renderLoading(isLoad) {
+    isLoad ? this._btnSave.textContent = 'Сохранение...' : this._btnSave.textContent = 'Сохранить';
   }
 
   close() {

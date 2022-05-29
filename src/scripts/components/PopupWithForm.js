@@ -17,13 +17,13 @@ export class PopupWithForm extends Popup {
     return formValues;
   }
 
+
   setEventListeners() {
     super.setEventListeners();
 
     this._formPopup.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues());
-      this.close();
     });
   }
 
@@ -32,4 +32,3 @@ export class PopupWithForm extends Popup {
     this._formPopup.reset();
   }
 }
-

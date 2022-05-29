@@ -21,6 +21,8 @@ import { PopupWithConfirm } from "../scripts/components/PopupWithConfirm.js";
 import { UserInfo } from "../scripts/components/UserInfo.js";
 import { Api } from "../scripts/components/Api.js";
 
+//большое спасибо что подсказали и не отклонили!
+let userId;
 const api = new Api({
   url: "https://mesto.nomoreparties.co/v1/cohort-41/",
   headers: {
@@ -29,21 +31,21 @@ const api = new Api({
   },
 });
 
-const createCard = (item, idUser) => {
+const createCard = (item, userId) => {
   const card = new Card(
     item,
     "#card",
     handleCardClick,
     handleLikeClick,
     handleDeleteCardClick,
-    idUser
+    userId
   );
   const cardElement = card.generate();
   return cardElement;
 };
 
-const renderNewCard = (item, idUser) => {
-  const newCard = createCard(item, idUser);
+const renderNewCard = (item, userId) => {
+  const newCard = createCard(item, userId);
   cardsList.addItem(newCard);
 };
 
@@ -68,16 +70,6 @@ function handleDeleteCardClick(card) {
   popupConfirmDeleteCard.getIdCard(card);
 }
 
-
-const loader = (popup, isLoad = false) => {
-  const submitButton = document.querySelector(
-    `${popup} .popup__save`
-  );
-
-  isLoad ? submitButton.textContent = 'Сохранение...' : submitButton.textContent = 'Сохранить';
-  
-};
-
 //информация пользователя
 const dataUser = new UserInfo({
   selectorName: ".profile__name",
@@ -93,53 +85,60 @@ formNewCard.enableValidation();
 formEditAvatar.enableValidation();
 
 const popupConfirmDeleteCard = new PopupWithConfirm("#delete-card", (item) => {
-  loader('#delete-card', true);
+  popupConfirmDeleteCard.renderLoading(true)
   api
     .deleteCard(item)
     .then(() => {
       popupConfirmDeleteCard._card.deleteCard();
+      popupConfirmDeleteCard.close();
     })
     .catch((err) => console.log(err))
     .finally(() => {
-      loader('#delete-card', false);
+      popupConfirmDeleteCard.renderLoading(false)
     });
 });
 
 const popupEditProfile = new PopupWithForm("#edit-profile", (item) => {
-  loader('#edit-profile', true);
+  popupEditProfile.renderLoading(true)
   api
     .setProfileInfo(item)
     .then((item) => {
       dataUser.setUserInfo(item);
+      popupEditProfile.close();
     })
     .catch((err) => console.log(err))
     .finally(() => {
-      loader('#edit-profile', false);
+      popupEditProfile.renderLoading(false)
     });
 });
 
 const popupAddCard = new PopupWithForm("#add-card", (item) => {
-  loader('#add-card', true);
+  popupAddCard.renderLoading(true)
   api
     .pushNewCard(item)
     .then((item) => {
-      //помогите советом во имя всех богов - при создании новой карточки через форму не появляется значок корзины, потому что сюда не попадает параметр айди пользователя this._myId и функция _checkIsOwner работает не корректно
-      const cardElement = createCard(item);
+      const cardElement = createCard(item,userId);
       cardsList.addItem(cardElement);
+      popupAddCard.close();
     })
     .catch((err) => console.log(err))
     .finally(() => {
-      loader('#add-card', false);
+      popupAddCard.renderLoading(false)
     });
 });
 
 const popupEditAvatar = new PopupWithForm("#edit-avatar", (item) => {
+  popupEditAvatar.renderLoading(true)
   api
     .setProfileAvatar(item)
     .then((item) => {
       dataUser.setAvatar(item.avatar);
+      popupEditAvatar.close();
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err))
+    .finally(() => {
+      popupEditAvatar.renderLoading(false)
+    })
 });
 
 const popupFullImage = new PopupWithImage({
@@ -180,5 +179,6 @@ Promise.all([api.getProfileInfo(), api.getAllCards()])
     dataUser.setUserInfo(userData);
     dataUser.setAvatar(userData.avatar);
     cardsList.renderItems(userCard, userData._id);
+    userId = userData._id;
   })
   .catch((err) => console.log(err));
